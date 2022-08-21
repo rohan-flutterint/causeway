@@ -740,7 +740,7 @@ You'll also need to rebuild all and then regenerate config files and tooling:
 ----
 git checkout $ISISBRANCH
 pushd bom
-mvn clean install -DskipTests -Dreleased
+mvn clean install -DskipTests -Dgithub
 popd
 mvn clean install -pl core/config
 mvn -D module-tooling -D skip.essential install -DskipTests
