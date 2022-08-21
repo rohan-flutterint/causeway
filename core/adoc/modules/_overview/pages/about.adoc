@@ -4414,7 +4414,7 @@ org.apache.isis.viewer:isis-viewer-wicket-ui:jar:<managed> +
 
 .Document Index Entries
 ****
-xref:refguide:extensions:index/fullcalendar/wkt/viewer/IsisModuleExtFullCalendarUi.adoc[IsisModuleExtFullCalendarUi]
+xref:refguide:extensions:index/fullcalendar/wkt/viewer/IsisModuleExtFullCalendarWicketUi.adoc[IsisModuleExtFullCalendarWicketUi]
 ****
 
 |Apache Isis Ext - pdf.js - Parent
@@ -5017,7 +5017,7 @@ package "Applib: Excel\n[Software System]" {
 Group: org.apache.isis.extensions
 Artifact: isis-extensions-excel
 Type: pom
-Directory: /extensions/applib/excel
+Directory: /extensions/core/excel
 ----
 |A domain service for Apache Isis', allowing collections
 of (view model) objects to be exported/imported to/from an
@@ -5029,7 +5029,7 @@ Excel spreadsheet.  Also support for excel-based fixtures.
 Group: org.apache.isis.extensions
 Artifact: isis-extensions-excel-applib
 Type: jar
-Directory: /extensions/applib/excel/applib
+Directory: /extensions/core/excel/applib
 ----
 |.Components
 ****
@@ -5057,7 +5057,7 @@ xref:refguide:extensions:index/excel/applib/AggregationType.adoc[AggregationType
 Group: org.apache.isis.extensions
 Artifact: isis-extensions-excel-fixtures
 Type: jar
-Directory: /extensions/applib/excel/fixture
+Directory: /extensions/core/excel/fixture
 ----
 |.Dependencies
 ****
@@ -5075,7 +5075,7 @@ org.projectlombok:lombok:jar:<managed> +
 Group: org.apache.isis.extensions
 Artifact: isis-extensions-excel-integtests
 Type: jar
-Directory: /extensions/applib/excel/integtests
+Directory: /extensions/core/excel/integtests
 ----
 |.Dependencies
 ****
@@ -5093,7 +5093,7 @@ org.hsqldb:hsqldb:jar:<managed> +
 Group: org.apache.isis.extensions
 Artifact: isis-extensions-excel-testing
 Type: jar
-Directory: /extensions/applib/excel/testing
+Directory: /extensions/core/excel/testing
 ----
 |.Dependencies
 ****
@@ -5140,7 +5140,7 @@ org.apache.poi:poi-ooxml-lite:jar:<managed> +
 
 .Document Index Entries
 ****
-xref:refguide:extensions:index/viewer/wicket/exceldownload/ui/IsisModuleExtExcelDownloadUi.adoc[IsisModuleExtExcelDownloadUi], xref:refguide:extensions:index/viewer/wicket/exceldownload/ui/components/CollectionContentsAsExcelFactory.adoc[CollectionContentsAsExcelFactory]
+xref:refguide:extensions:index/viewer/wicket/exceldownload/ui/IsisModuleExtExcelDownloadWicketUi.adoc[IsisModuleExtExcelDownloadWicketUi], xref:refguide:extensions:index/viewer/wicket/exceldownload/ui/components/CollectionContentsAsExcelFactory.adoc[CollectionContentsAsExcelFactory]
 ****
 |===
 
