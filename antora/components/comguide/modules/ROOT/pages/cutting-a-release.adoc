@@ -743,7 +743,7 @@ pushd bom
 mvn clean install -T1C -o -DskipTests -Dgithub
 popd
 mvn clean install -pl core/config
-mvn -D module-tooling -D skip.essential install -DskipTests
+mvn install -Dmodule-tooling -Dskip.essential -DskipTests
 ----
 
 ====
