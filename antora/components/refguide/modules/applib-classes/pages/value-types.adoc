@@ -5,11 +5,26 @@
 :page-partial:
 
 
+Value types (or value objects) are building blocks of domain objects (entities and view models), used as the data types for the object's properties.
+
+For complete support:
+
+* the framework must now how to render and parse the values (the UI/presentation)
+* the framework must now how to encode/decode the value (if used in a view model)
+* the persistence mechanism (xref:pjpa::about.adoc[JPA] or xref:pjdo:ROOT:about.adoc[JDO]) must know how to persist the value
+
+The framework supports a large number of JDK value types (strings, dates, numbers), and provides an additional set of value types; see the xref:#built-in[sections] xref:#framework-defined[below].
+
+The xref:valuetypes:ROOT:about.adoc[] provides a set of optional value types that can also be added to your application.
+
+You can also define custom value types.
+This topic is also discussed in the xref:valuetypes:ROOT:about.adoc[].
+
+
+[#built-in]
 == Built-in
 
-Apache Isis can render and persist all of the JDK primitives and wrapper classes, and a number of other JDK (7.x) classes that represent value types.
-
-It also supports some of the link:http://www.joda.org/joda-time/[Joda-Time] datatypes, and a number of value types that are shipped by the framework itself.
+Apache Isis can render and persist all of the JDK primitives and wrapper classes, and a number of other JDK classes that represent value types.
 
 In addition to primitives, the JDK Classes supported are:
 
@@ -24,33 +39,47 @@ In addition to primitives, the JDK Classes supported are:
 ** `java.math.BigDecimal`
 ** `java.math.BigInteger`
 
-* date types:
+* dates in the `java.time` package:
+
+** `java.time.LocalTime`
+** `java.time.LocalDate`
+** `java.time.LocalDateTime`
+** `java.time.OffsetDateTime`
+** `java.time.OffsetTime`
+** `java.time.ZonedDateTime`
+
+* dates in the `java.sql` package:
 
 ** `java.sql.Date`
 ** `java.sql.Time`
 ** `java.sql.Timestamp`
+
+* dates in the `java.util` package:
+
 ** `java.util.Date`
 
+* images:
 
-== Joda Time
+** `java.awt.BufferedImage`
 
-It also supports these Joda-Time classes:
+* URLs
 
-* `org.joda.time.DateTime`
-* `org.joda.time.LocalDateTime`
-* `org.joda.time.LocalDate`
+** `java.net.URL` - for external URLs
+
+* identifiers
+
+** `java.util.UUID` q
 
 
 
+[#framework-defined]
 == Framework-defined
 
 The framework also defines a number of custom value types:
 
-* xref:refguide:applib:index/value/Blob.adoc[Blob]
+* xref:refguide:applib:index/value/Blob.adoc[Blob] - eg to represent application/pdf
 * xref:refguide:applib:index/value/Clob.adoc[Clob]
 * xref:refguide:applib:index/value/Markup.adoc[Markup]
 * xref:refguide:applib:index/value/LocalResourcePath.adoc[LocalResourcePath]
 * xref:refguide:applib:index/value/Password.adoc[Password]
 
-In addition, there are a number of non-core value types that can be brought in individually.
-These can be found in the xref:valuetypes:ROOT:about.adoc[Value Type Catalog].
