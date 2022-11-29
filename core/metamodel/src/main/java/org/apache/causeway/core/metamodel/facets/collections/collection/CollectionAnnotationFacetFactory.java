@@ -40,6 +40,7 @@ import org.apache.causeway.core.metamodel.facets.collections.collection.modify.C
 import org.apache.causeway.core.metamodel.facets.collections.collection.typeof.TypeOfFacetForCollectionAnnotation;
 import org.apache.causeway.core.metamodel.facets.object.domainobject.domainevents.CollectionDomainEventDefaultFacetForDomainObjectAnnotation;
 import org.apache.causeway.core.metamodel.facets.propcoll.accessor.PropertyOrCollectionAccessorFacet;
+import org.apache.causeway.core.metamodel.facets.properties.property.modify.PropertyDomainEventFacetDefault;
 import org.apache.causeway.core.metamodel.spec.ObjectSpecification;
 import org.apache.causeway.core.metamodel.specloader.validator.MetaModelValidatorForAmbiguousMixinAnnotations;
 import org.apache.causeway.core.metamodel.util.EventUtil;
@@ -86,6 +87,7 @@ extends FacetFactoryAbstract {
         addFacet(new ActionSemanticsFacetAbstract(SemanticsOf.SAFE, facetedMethod) {});
         addFacet(new ContributingFacetAbstract(Contributing.AS_ASSOCIATION, facetedMethod) {});
 
+        addFacet(new CollectionDomainEventFacetDefault(collectionIfAny.get().domainEvent(), facetedMethod));
     }
 
     void processModify(final ProcessMethodContext processMethodContext, final Optional<Collection> collectionIfAny) {

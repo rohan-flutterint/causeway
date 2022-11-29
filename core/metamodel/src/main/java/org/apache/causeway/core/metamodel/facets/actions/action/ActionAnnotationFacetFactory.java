@@ -23,6 +23,8 @@ import java.util.Optional;
 import javax.inject.Inject;
 
 import org.apache.causeway.applib.annotation.Action;
+import org.apache.causeway.applib.annotation.Collection;
+import org.apache.causeway.applib.annotation.SemanticsOf;
 import org.apache.causeway.applib.events.domain.ActionDomainEvent;
 import org.apache.causeway.applib.mixins.system.HasInteractionId;
 import org.apache.causeway.core.config.progmodel.ProgrammingModelConstants;
@@ -41,7 +43,11 @@ import org.apache.causeway.core.metamodel.facets.actions.action.invocation.Actio
 import org.apache.causeway.core.metamodel.facets.actions.action.prototype.PrototypeFacetForActionAnnotation;
 import org.apache.causeway.core.metamodel.facets.actions.action.semantics.ActionSemanticsFacetForActionAnnotation;
 import org.apache.causeway.core.metamodel.facets.actions.action.typeof.TypeOfFacetForActionAnnotation;
+import org.apache.causeway.core.metamodel.facets.actions.contributing.ContributingFacet;
+import org.apache.causeway.core.metamodel.facets.actions.contributing.ContributingFacetAbstract;
 import org.apache.causeway.core.metamodel.facets.actions.fileaccept.FileAcceptFacetForActionAnnotation;
+import org.apache.causeway.core.metamodel.facets.actions.semantics.ActionSemanticsFacetAbstract;
+import org.apache.causeway.core.metamodel.facets.collections.collection.modify.CollectionDomainEventFacetDefault;
 import org.apache.causeway.core.metamodel.facets.members.layout.group.LayoutGroupFacetForActionAnnotation;
 import org.apache.causeway.core.metamodel.facets.members.publish.command.CommandPublishingFacetForActionAnnotation;
 import org.apache.causeway.core.metamodel.facets.members.publish.execution.ExecutionPublishingActionFacetForActionAnnotation;
@@ -69,6 +75,8 @@ extends FacetFactoryAbstract {
                         () -> MetaModelValidatorForAmbiguousMixinAnnotations
                         .addValidationFailure(processMethodContext.getFacetHolder(), Action.class));
 
+        inferIntentWhenOnTypeLevel(processMethodContext, actionIfAny);
+
         processExplicit(processMethodContext, actionIfAny);
         processInvocation(processMethodContext, actionIfAny);
         processHidden(processMethodContext, actionIfAny);
@@ -86,6 +94,15 @@ extends FacetFactoryAbstract {
         processChoicesFrom(processMethodContext, actionIfAny);
 
         processFileAccept(processMethodContext, actionIfAny);
+    }
+
+    void inferIntentWhenOnTypeLevel(final ProcessMethodContext processMethodContext, final Optional<Action> actionIfAny) {
+        if(!processMethodContext.isMixinMain() || !actionIfAny.isPresent()) {
+            return; // no @Action found neither type nor method
+        }
+
+        val facetedMethod = processMethodContext.getFacetHolder();
+        addFacet(new ActionDomainEventFacetDefault(actionIfAny.get().domainEvent(), facetedMethod));
     }
 
     void processExplicit(final ProcessMethodContext processMethodContext, final Optional<Action> actionIfAny) {

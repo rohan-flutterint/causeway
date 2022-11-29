@@ -29,6 +29,7 @@ import org.apache.causeway.applib.events.domain.PropertyDomainEvent;
 import org.apache.causeway.applib.mixins.system.HasInteractionId;
 import org.apache.causeway.commons.internal.base._NullSafe;
 import org.apache.causeway.core.metamodel.context.MetaModelContext;
+import org.apache.causeway.core.metamodel.facetapi.FacetUtil;
 import org.apache.causeway.core.metamodel.facetapi.FeatureType;
 import org.apache.causeway.core.metamodel.facets.FacetFactoryAbstract;
 import org.apache.causeway.core.metamodel.facets.actions.contributing.ContributingFacet.Contributing;
@@ -115,6 +116,10 @@ extends FacetFactoryAbstract {
         val facetedMethod = processMethodContext.getFacetHolder();
         addFacet(new ActionSemanticsFacetAbstract(SemanticsOf.SAFE, facetedMethod) {});
         addFacet(new ContributingFacetAbstract(Contributing.AS_ASSOCIATION, facetedMethod) {});
+
+        val accessorFacet = facetedMethod.getFacet(PropertyOrCollectionAccessorFacet.class);
+        addFacet(new PropertyDomainEventFacetDefault(propertyIfAny.get().domainEvent(), accessorFacet, facetedMethod));
+
     }
 
     void processModify(final ProcessMethodContext processMethodContext, final Optional<Property> propertyIfAny) {
