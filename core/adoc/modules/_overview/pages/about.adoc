@@ -1093,12 +1093,7 @@ Artifact: demo-web
 Type: jar
 Directory: /examples/demo/web
 ----
-|.Components
-****
-demoapp.web._infra.utils.ThereCanBeOnlyOne +
-****
-
-.Dependencies
+|.Dependencies
 ****
 org.apache.causeway.examples.apps:demo-domain:jar:<managed> +
 org.apache.causeway.extensions:causeway-extensions-cors-impl:jar:<managed> +
@@ -1116,12 +1111,7 @@ Artifact: demo-wicket-common
 Type: jar
 Directory: /examples/demo/wicket/common
 ----
-|.Components
-****
-demoapp.webapp.wicket.common.ui.custom.WhereInTheWorldPanelFactory +
-****
-
-.Dependencies
+|.Dependencies
 ****
 org.apache.causeway.examples.apps:demo-web:jar:${project.version} +
 org.apache.causeway.extensions:causeway-extensions-fullcalendar-wicket-ui:jar:<managed> +
@@ -3933,12 +3923,7 @@ Artifact: causeway-valuetypes-asciidoc-ui-vaa
 Type: jar
 Directory: /valuetypes/asciidoc/ui/vaadin
 ----
-|.Components
-****
-o.a.i.valuetypes.asciidoc.ui.vaa.components.AsciiDocFieldFactoryVaa +
-****
-
-.Dependencies
+|.Dependencies
 ****
 org.apache.causeway.incubator.viewer:causeway-viewer-vaadin-ui:jar:${project.version} +
 ****
@@ -6524,32 +6509,7 @@ Artifact: causeway-regressiontests-stable
 Type: jar
 Directory: /regressiontests/stable
 ----
-|.Components
-****
-o.a.i.testdomain.conf.Configuration_headless$HeadlessCommandSupport +
-o.a.i.testdomain.jdo.JdoInventoryDao +
-o.a.i.testdomain.jdo.JdoTestFixtures +
-o.a.i.testdomain.jpa.JpaInventoryDao +
-o.a.i.testdomain.jpa.JpaTestFixtures +
-o.a.i.testdomain.jpa.springdata.EmployeeRepository +
-o.a.i.testdomain.model.valuetypes.ValueTypeExampleService +
-o.a.i.testdomain.publishing.PublishingTestFactoryAbstract$CommitListener +
-o.a.i.testdomain.publishing.PublishingTestFactoryJdo +
-o.a.i.testdomain.publishing.PublishingTestFactoryJpa +
-o.a.i.testdomain.publishing.subscriber.CommandSubscriberForTesting +
-o.a.i.testdomain.publishing.subscriber.EntityChangesSubscriberForTesting +
-o.a.i.testdomain.publishing.subscriber.EntityPropertyChangeSubscriberForTesting +
-o.a.i.testdomain.publishing.subscriber.ExecutionSubscriberForTesting +
-o.a.i.testdomain.util.event.LifecycleEventSubscriberJdoForTesting +
-o.a.i.testdomain.util.event.LifecycleEventSubscriberJpaForTesting +
-o.a.i.testdomain.util.interaction.DomainObjectTesterFactory +
-o.a.i.testdomain.util.interaction.InteractionBoundaryProbe +
-o.a.i.testdomain.util.kv.KVStoreForTesting +
-o.a.i.testdomain.util.rest.RestEndpointService +
-o.a.i.testdomain.wrapperfactory.CounterRepository +
-****
-
-.Dependencies
+|.Dependencies
 ****
 org.apache.causeway.extensions:causeway-extensions-fullcalendar-applib:jar:<managed> +
 org.apache.causeway.extensions:causeway-extensions-secman-encryption-jbcrypt:jar:<managed> +
@@ -7127,16 +7087,7 @@ Artifact: causeway-viewer-graphql-viewer
 Type: jar
 Directory: /incubator/viewers/graphql/viewer
 ----
-|.Components
-****
-o.a.i.viewer.graphql.viewer.source.ExecutionStrategyResolvingWithinInteraction +
-o.a.i.viewer.graphql.viewer.source.GraphQlServiceForCauseway +
-o.a.i.viewer.graphql.viewer.source.GraphQlSourceForCauseway +
-o.a.i.viewer.graphql.viewer.source.ObjectTypeFactory +
-o.a.i.viewer.graphql.viewer.source.QueryFieldFactory +
-****
-
-.Dependencies
+|.Dependencies
 ****
 org.apache.causeway.core:causeway-core-webapp:jar:<managed> +
 org.apache.causeway.incubator.viewer:causeway-viewer-graphql-model:jar:<managed> +
@@ -7246,23 +7197,7 @@ Artifact: causeway-viewer-vaadin-ui
 Type: jar
 Directory: /incubator/viewers/vaadin/ui
 ----
-|.Components
-****
-o.a.i.incubator.viewer.vaadin.ui.auth.LogoutHandlerVaa +
-o.a.i.incubator.viewer.vaadin.ui.auth.VaadinAuthenticationHandler +
-o.a.i.incubator.viewer.vaadin.ui.components.UiComponentFactoryVaa +
-o.a.i.incubator.viewer.vaadin.ui.components.blob.BlobFieldFactory +
-o.a.i.incubator.viewer.vaadin.ui.components.clob.ClobFieldFactory +
-o.a.i.incubator.viewer.vaadin.ui.components.markup.MarkupFieldFactory +
-o.a.i.incubator.viewer.vaadin.ui.components.other.FallbackFieldFactory +
-o.a.i.incubator.viewer.vaadin.ui.components.temporal.TemporalFieldFactory +
-o.a.i.incubator.viewer.vaadin.ui.components.text.TextFieldFactory +
-o.a.i.incubator.viewer.vaadin.ui.components.text.uuid.UuidFieldFactory +
-o.a.i.incubator.viewer.vaadin.ui.pages.main.UiActionHandlerVaa +
-o.a.i.incubator.viewer.vaadin.ui.pages.main.UiContextVaaDefault +
-****
-
-.Dependencies
+|.Dependencies
 ****
 com.vaadin:vaadin-spring:jar:<managed> +
 commons-fileupload:commons-fileupload:jar:1.5 +
@@ -7389,30 +7324,7 @@ Artifact: causeway-viewer-javafx-ui
 Type: jar
 Directory: /incubator/viewers/javafx/ui
 ----
-|.Components
-****
-o.a.i.incubator.viewer.javafx.ui.components.UiComponentFactoryFx +
-o.a.i.incubator.viewer.javafx.ui.components.markup.MarkupFieldFactory +
-o.a.i.incubator.viewer.javafx.ui.components.number.NumberFieldFactory +
-o.a.i.incubator.viewer.javafx.ui.components.objectref.ObjectReferenceFieldFactory +
-o.a.i.incubator.viewer.javafx.ui.components.other.FallbackFieldFactory +
-o.a.i.incubator.viewer.javafx.ui.components.temporal.TemporalFieldFactory +
-o.a.i.incubator.viewer.javafx.ui.components.text.TextFieldFactory +
-o.a.i.incubator.viewer.javafx.ui.decorator.disabling.DisablingDecoratorForButton +
-o.a.i.incubator.viewer.javafx.ui.decorator.disabling.DisablingDecoratorForFormField +
-o.a.i.incubator.viewer.javafx.ui.decorator.icon.IconDecoratorForLabeled +
-o.a.i.incubator.viewer.javafx.ui.decorator.icon.IconDecoratorForMenuItem +
-o.a.i.incubator.viewer.javafx.ui.decorator.icon.IconServiceDefault +
-o.a.i.incubator.viewer.javafx.ui.decorator.prototyping.PrototypingDecoratorForButton +
-o.a.i.incubator.viewer.javafx.ui.decorator.prototyping.PrototypingDecoratorForFormField +
-o.a.i.incubator.viewer.javafx.ui.decorator.prototyping.PrototypingInfoPopupProvider +
-o.a.i.incubator.viewer.javafx.ui.main.MainViewFx +
-o.a.i.incubator.viewer.javafx.ui.main.UiActionHandlerFx +
-o.a.i.incubator.viewer.javafx.ui.main.UiBuilderFx +
-o.a.i.incubator.viewer.javafx.ui.main.UiContextFxDefault +
-****
-
-.Dependencies
+|.Dependencies
 ****
 org.apache.causeway.core:causeway-core-runtimeservices:jar:<managed> +
 org.apache.causeway.incubator.viewer:causeway-viewer-javafx-model:jar:<managed> +
