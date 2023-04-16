@@ -18,8 +18,8 @@
  */
 package demoapp.dom.domain.collections.Collection;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
@@ -33,13 +33,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.val;
 
 import demoapp.dom.domain.collections.Collection.domainEvent.CollectionDomainEventPage;
+import demoapp.dom.domain.collections.Collection.hidden.CollectionHiddenPage;
 import demoapp.dom.domain.collections.Collection.typeOf.CollectionTypeOfPage;
 
 @Named("demo.CollectionMenu")
 @DomainService(
         nature=NatureOfService.VIEW
 )
-@jakarta.annotation.Priority(PriorityPrecedence.EARLY)
+@javax.annotation.Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 //@Log4j2
 public class CollectionMenu {
@@ -57,6 +58,12 @@ public class CollectionMenu {
         page.addOtherChild("#2");
         page.addOtherChild("#3");
         return page;
+    }
+
+    @Action(semantics = SemanticsOf.SAFE)
+    @ActionLayout(cssClassFa="fa-glasses", describedAs = "Visibility of collections")
+    public CollectionHiddenPage hidden(){
+        return new CollectionHiddenPage();
     }
 
     @Action(semantics = SemanticsOf.SAFE)

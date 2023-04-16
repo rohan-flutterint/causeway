@@ -18,7 +18,7 @@
  */
 package demoapp.dom.domain.progmodel.objects.mixins.mixins;
 
-import jakarta.inject.Named;
+import javax.inject.Named;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
@@ -32,7 +32,7 @@ import lombok.val;
 @DomainService(
         nature = NatureOfService.VIEW
 )
-@jakarta.annotation.Priority(PriorityPrecedence.EARLY)
+@javax.annotation.Priority(PriorityPrecedence.EARLY)
 public class MixinMenu {
 
     @Action

@@ -1,3 +1,4 @@
+
 /*
  *  Licensed to the Apache Software Foundation (ASF) under one
  *  or more contributor license agreements.  See the NOTICE file
@@ -16,31 +17,31 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package demoapp.dom.domain.actions.ActionLayout.position;
+package demoapp.dom.domain.actions.Action.hidden;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.MemberSupport;
-import org.apache.causeway.applib.annotation.SemanticsOf;
 
 import lombok.RequiredArgsConstructor;
 
-
 //tag::class[]
-@Action(semantics = SemanticsOf.IDEMPOTENT)
+@Action()                    // <.>
 @RequiredArgsConstructor
-public class ActionLayoutPositionPage_updateNotesPositionedBelow {
+public class ActionHidden_changeName {
     // ...
 //end::class[]
-    private final ActionLayoutPositionPage page;
 
-    @MemberSupport public ActionLayoutPositionPage act(final String newValue) {
-        page.setNotes(newValue);
-        return page;
-    }
-    @MemberSupport public String default0Act() {
-        return page.getNotes();
+    private final ActionHidden entity;
+
+    @MemberSupport public ActionHidden act(
+            final String newName) {
+        entity.setName(newName);
+        return entity;
     }
 
+    public String default0Act() {
+        return entity.getName();
+    }
 //tag::class[]
 }
 //end::class[]

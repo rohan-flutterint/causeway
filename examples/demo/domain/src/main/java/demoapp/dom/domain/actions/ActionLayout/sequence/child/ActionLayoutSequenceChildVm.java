@@ -16,43 +16,47 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package demoapp.dom.domain.actions.ActionLayout.sequence.child;
+package demoapp.dom.services.core.xmlSnapshotService.child;
 
-import demoapp.dom._infra.asciidocdesc.HasAsciiDocDescription;
+import javax.inject.Named;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+import org.apache.causeway.applib.annotation.DomainObject;
+import org.apache.causeway.applib.annotation.Nature;
+import org.apache.causeway.applib.annotation.Property;
+import org.apache.causeway.applib.annotation.PropertyLayout;
+import org.apache.causeway.applib.annotation.Title;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.inject.Named;
-import jakarta.xml.bind.annotation.*;
-
-import org.apache.causeway.applib.annotation.*;
+import demoapp.dom._infra.asciidocdesc.HasAsciiDocDescription;
 
 //tag::class[]
 @XmlRootElement(name = "child")
 @XmlType
 @XmlAccessorType(XmlAccessType.FIELD)
-@Named("demo.ActionLayoutSequenceChildVm")
-@DomainObject(nature=Nature.VIEW_MODEL)
+@Named("demo.XmlSnapshotChildVm")
+@DomainObject(
+        nature=Nature.VIEW_MODEL)
 @NoArgsConstructor
-public class ActionLayoutSequenceChildVm implements HasAsciiDocDescription {
+public class XmlSnapshotChildVm implements HasAsciiDocDescription {
 
-    public ActionLayoutSequenceChildVm(final String value) {
+    public XmlSnapshotChildVm(final String value) {
         setValue(value);
     }
 
-    @ObjectSupport public String title() {
-        return getValue();
-    }
-
+    @Title
     @Property()
     @PropertyLayout(fieldSetId = "annotation", sequence = "1")
     @XmlElement(required = false)
     @Getter @Setter
     private String value;
-
-
 
 }
 //end::class[]

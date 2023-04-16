@@ -24,6 +24,8 @@ import jakarta.inject.Inject;
 
 import org.springframework.context.annotation.Profile;
 
+import org.springframework.context.annotation.Profile;
+
 import org.apache.causeway.applib.annotation.Collection;
 import org.apache.causeway.applib.annotation.CollectionLayout;
 import org.apache.causeway.applib.annotation.MemberSupport;

@@ -16,20 +16,38 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package demoapp.dom.types.causeway.treenode;
+package demoapp.dom.domain.properties.Property.hidden;
 
+import javax.inject.Named;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+import org.apache.causeway.applib.annotation.DomainObject;
+import org.apache.causeway.applib.annotation.Nature;
 import org.apache.causeway.applib.annotation.ObjectSupport;
-import org.apache.causeway.applib.util.Enums;
 
+import lombok.NoArgsConstructor;
+
+import demoapp.dom._infra.asciidocdesc.HasAsciiDocDescription;
+
+@XmlRootElement(name = "root")
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
+@Named("demo.PropertyHiddenPage")
+@DomainObject(
+    nature=Nature.VIEW_MODEL)
+@NoArgsConstructor
 //tag::class[]
-public enum FileNodeType {
-
-    FILE_SYSTEM_ROOT,
-    DIRECTORY,
-    FILE;
+public class PropertyHiddenPage implements HasAsciiDocDescription {
+    // ...
+//end::class[]
 
     @ObjectSupport public String title() {
-        return Enums.getFriendlyNameOf(this);   // <.>
+        return "@Property#hidden";
     }
+
+//tag::class[]
 }
 //end::class[]

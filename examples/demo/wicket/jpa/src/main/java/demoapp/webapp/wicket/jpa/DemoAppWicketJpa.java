@@ -18,8 +18,6 @@
  */
 package demoapp.webapp.wicket.jpa;
 
-import org.apache.causeway.security.bypass.CausewayModuleSecurityBypass;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -71,9 +69,6 @@ import demoapp.webapp.wicket.common.ui.DemoAppWicketCommon;
 
     // Custom Demo UI (Wicket Viewer)
     DemoAppWicketCommon.class,
-
-    // bypassing security for kroviz development
-    CausewayModuleSecurityBypass.class,
 
     // Persistence/Converters (JPA)
     CausewayModuleValAsciidocPersistenceJpa.class,

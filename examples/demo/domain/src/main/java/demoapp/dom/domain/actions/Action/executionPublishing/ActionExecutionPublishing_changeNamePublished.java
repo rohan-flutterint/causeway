@@ -19,7 +19,7 @@
  */
 package demoapp.dom.domain.actions.Action.executionPublishing;
 
-import jakarta.inject.Inject;
+import javax.inject.Inject;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.MemberSupport;

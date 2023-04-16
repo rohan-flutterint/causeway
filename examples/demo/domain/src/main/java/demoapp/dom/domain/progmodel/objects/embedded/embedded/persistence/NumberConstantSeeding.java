@@ -20,7 +20,7 @@
 
 package demoapp.dom.domain.progmodel.objects.embedded.embedded.persistence;
 
-import jakarta.inject.Inject;
+import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 

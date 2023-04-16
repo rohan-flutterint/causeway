@@ -25,13 +25,14 @@ import java.util.regex.Pattern;
 import org.apache.causeway.applib.annotation.ObjectSupport;
 import org.apache.causeway.applib.annotation.Value;
 
-import demoapp.dom.domain.progmodel.objects.embedded.embedded.ComplexNumber;
 import lombok.AccessLevel;
 import lombok.val;
 
+import demoapp.dom.domain.progmodel.objects.embedded.embedded.ComplexNumber;
+
 // tag::class[]
 //@Entity                                                               // <.>
-@jakarta.persistence.Embeddable                                         // <.>
+@javax.persistence.Embeddable                                           // <.>
 @Value                                                                  // <.>
 @lombok.Getter                                                          // <.>
 @lombok.Setter(AccessLevel.PRIVATE)                                     // <.>
@@ -40,10 +41,10 @@ import lombok.val;
 public class ComplexNumberJpa
         implements ComplexNumber {
 
-    @jakarta.persistence.Column(nullable = false)
+    @javax.persistence.Column(nullable = false)
     private double re;
 
-    @jakarta.persistence.Column(nullable = false)
+    @javax.persistence.Column(nullable = false)
     private double im;
 
 // end::class[]

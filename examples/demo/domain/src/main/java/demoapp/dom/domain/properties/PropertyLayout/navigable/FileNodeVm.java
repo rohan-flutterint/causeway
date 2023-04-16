@@ -20,9 +20,9 @@ package demoapp.dom.domain.properties.PropertyLayout.navigable;
 
 import java.io.File;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.LabelPosition;
@@ -42,8 +42,8 @@ import lombok.val;
 
 import demoapp.dom._infra.asciidocdesc.HasAsciiDocDescription;
 
-@Named("demo.FileNodeVm")
-@XmlRootElement(name="FileNodeVm")
+@XmlRootElement(name="FileNode")
+@Named("demo.FileNode")
 @DomainObject(nature=Nature.VIEW_MODEL)
 @ToString
 @NoArgsConstructor
@@ -74,12 +74,17 @@ public class FileNodeVm implements HasAsciiDocDescription {
     }
 //end::iconName[]
 
+//tag::tree[]
+    @Property
+    @PropertyLayout(labelPosition = LabelPosition.NONE, fieldSetId = "tree", sequence = "1")
+    public TreeNode<FileNodeVm> getTree() {
+        return fileTreeNodeService.sessionTree();
+    }
+//end::tree[]
+
 //tag::navigable[]
     @Property
-    @PropertyLayout(
-            navigable=Navigable.PARENT,             // <.>
-            hidden=Where.EVERYWHERE                 // <.>
-    )
+    @PropertyLayout(navigable=Navigable.PARENT, hidden=Where.EVERYWHERE, fieldSetId = "detail", sequence = "1")
     public FileNodeVm getParent() {
         val parentFile = asFile().getParentFile();
         return parentFile != null
@@ -103,4 +108,6 @@ public class FileNodeVm implements HasAsciiDocDescription {
         return new File(path);
     }
 
+    @Inject
+    FileTreeNodeService fileTreeNodeService;
 }

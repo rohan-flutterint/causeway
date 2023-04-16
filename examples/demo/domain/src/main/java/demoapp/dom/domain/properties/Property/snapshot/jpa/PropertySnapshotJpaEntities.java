@@ -16,25 +16,40 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package demoapp.dom.domain.properties.Property.snapshot.jpa;
+package demoapp.dom.domain.actions.Action.hidden.jpa;
+
+import java.util.List;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import demoapp.dom._infra.values.ValueHolderRepository;
+import demoapp.dom.domain.actions.Action.hidden.ActionHidden;
+import demoapp.dom.domain.actions.Action.hidden.ActionHiddenRepository;
 
 @Profile("demo-jpa")
 @Service
-public class PropertySnapshotJpaEntities
-extends ValueHolderRepository<String, PropertySnapshotJpa> {
+public class ActionHiddenJpaEntities
+extends ValueHolderRepository<String, ActionHiddenJpa> implements ActionHiddenRepository {
 
-    protected PropertySnapshotJpaEntities() {
-        super(PropertySnapshotJpa.class);
+    protected ActionHiddenJpaEntities() {
+        super(ActionHiddenJpa.class);
     }
 
     @Override
-    protected PropertySnapshotJpa newDetachedEntity(String value) {
-        return new PropertySnapshotJpa(value);
+    protected ActionHiddenJpa newDetachedEntity(String value) {
+        return new ActionHiddenJpa(value);
     }
 
+    @Override
+    public List<? extends ActionHidden> allInstances() {
+        return all();
+    }
+
+    public List<? extends ActionHidden> allMatches(final String s) {
+        return all();
+    }
+    public List<? extends ActionHidden> allMatches() {
+        return all();
+    }
 }

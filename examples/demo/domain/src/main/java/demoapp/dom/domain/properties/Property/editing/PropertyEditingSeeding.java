@@ -16,9 +16,9 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package demoapp.dom.domain.properties.Property.editing;
+package demoapp.dom.domain.properties.Property.hidden;
 
-import jakarta.inject.Inject;
+import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
@@ -26,13 +26,15 @@ import demoapp.dom._infra.seed.SeedServiceAbstract;
 import demoapp.dom._infra.values.ValueHolderRepository;
 
 @Service
-public class PropertyEditingSeeding
+public class PropertyHiddenSeeding
 extends SeedServiceAbstract {
 
     @Inject
-    public PropertyEditingSeeding(
-            ValueHolderRepository<String, ? extends PropertyEditing> entities) {
+    public PropertyHiddenSeeding(
+            ValueHolderRepository<String, ? extends PropertyHidden> entities) {
         super(entities);
     }
+
+
 
 }

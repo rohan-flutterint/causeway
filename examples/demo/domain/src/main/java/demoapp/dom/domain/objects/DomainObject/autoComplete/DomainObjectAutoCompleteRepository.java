@@ -28,6 +28,8 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.stereotype.Repository;
 
+import org.springframework.stereotype.Repository;
+
 import org.apache.causeway.applib.annotation.MinLength;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 

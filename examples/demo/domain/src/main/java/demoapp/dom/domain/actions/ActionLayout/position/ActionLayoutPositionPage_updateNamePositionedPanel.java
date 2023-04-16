@@ -16,33 +16,36 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package demoapp.dom.domain.actions.ActionLayout.position;
+package demoapp.dom.domain.actions.Action.hidden;
 
-import org.apache.causeway.applib.annotation.Action;
-import org.apache.causeway.applib.annotation.ActionLayout;
-import org.apache.causeway.applib.annotation.MemberSupport;
-import org.apache.causeway.applib.annotation.SemanticsOf;
+import javax.inject.Named;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-import lombok.RequiredArgsConstructor;
+import org.apache.causeway.applib.annotation.DomainObject;
+import org.apache.causeway.applib.annotation.Nature;
+import org.apache.causeway.applib.annotation.ObjectSupport;
 
+import lombok.NoArgsConstructor;
 
+import demoapp.dom._infra.asciidocdesc.HasAsciiDocDescription;
+
+@XmlRootElement(name = "root")
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
+@Named("demo.ActionHiddenPage")
+@DomainObject(
+    nature=Nature.VIEW_MODEL)
+@NoArgsConstructor
 //tag::class[]
-@Action(semantics = SemanticsOf.IDEMPOTENT)
-@ActionLayout(
-        position = ActionLayout.Position.PANEL,
-        associateWith = "name")
-@RequiredArgsConstructor
-public class ActionLayoutPositionPage_updateNamePositionedPanel {
+public class ActionHiddenPage implements HasAsciiDocDescription {
     // ...
 //end::class[]
-    private final ActionLayoutPositionPage page;
 
-    @MemberSupport public ActionLayoutPositionPage act(final String newValue) {
-        page.setName(newValue);
-        return page;
-    }
-    @MemberSupport public String default0Act() {
-        return page.getName();
+    @ObjectSupport public String title() {
+        return "@Action#hidden";
     }
 
 //tag::class[]

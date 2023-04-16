@@ -16,61 +16,53 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package demoapp.dom.domain.properties.Property.snapshot.jpa;
+package demoapp.dom.domain.actions.Action.hidden.jpa;
 
-import jakarta.inject.Named;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.inject.Named;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.context.annotation.Profile;
 
 import org.apache.causeway.applib.annotation.DomainObject;
-import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Nature;
-import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import demoapp.dom.domain.properties.Property.snapshot.PropertySnapshot;
+import demoapp.dom.domain.actions.Action.hidden.ActionHidden;
 
 @Profile("demo-jpa")
 @Entity
 @Table(
     schema = "demo",
-    name = "PropertySnapshotJpa"
+    name = "ActionHiddenJpa"
 )
 @EntityListeners(CausewayEntityListener.class)
-@Named("demo.PropertySnapshot")
+@Named("demo.ActionHiddenJpa")
 @NoArgsConstructor
 //tag::class[]
 // ...
 @DomainObject(nature = Nature.ENTITY)
-public class PropertySnapshotJpa
-                extends PropertySnapshot {
+public class ActionHiddenJpa extends ActionHidden {
     // ...
 //end::class[]
 
-    public PropertySnapshotJpa(String value) {
+    public ActionHiddenJpa(String value) {
         setName(value);
     }
 
     @Id
     @GeneratedValue
     private Long id;
-//tag::class[]
 
-//tag::name[]
-    @Property()
     @Getter @Setter
     private String name;
-//end::name[]
-
 
 //tag::class[]
 }

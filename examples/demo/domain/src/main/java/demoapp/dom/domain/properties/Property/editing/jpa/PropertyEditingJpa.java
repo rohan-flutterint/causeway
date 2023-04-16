@@ -16,80 +16,75 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package demoapp.dom.domain.properties.Property.editing.jpa;
+package demoapp.dom.domain.properties.Property.hidden.jpa;
 
-import jakarta.inject.Named;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.inject.Named;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.context.annotation.Profile;
 
 import org.apache.causeway.applib.annotation.DomainObject;
-import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Nature;
 import org.apache.causeway.applib.annotation.Property;
+import org.apache.causeway.applib.annotation.PropertyLayout;
+import org.apache.causeway.applib.annotation.Where;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import demoapp.dom.domain.properties.Property.editing.PropertyEditing;
+import demoapp.dom.domain.properties.Property.hidden.PropertyHidden;
 
 @Profile("demo-jpa")
 @Entity
 @Table(
     schema = "demo",
-    name = "PropertyEditingJpa"
+    name = "PropertyHiddenJpa"
 )
 @EntityListeners(CausewayEntityListener.class)
-@Named("demo.PropertyEditing")
+@Named("demo.PropertyHiddenJpa")
 @NoArgsConstructor
 //tag::class[]
 // ...
 @DomainObject(nature = Nature.ENTITY)
-public class PropertyEditingJpa
-                extends PropertyEditing {
+public class PropertyHiddenJpa extends PropertyHidden {
     // ...
 //end::class[]
 
-    public PropertyEditingJpa(String value) {
+    public PropertyHiddenJpa(final String value) {
         setName(value);
-        setOriginalName(value);
+        setNameHiddenAllTables(value);
+        setNameHiddenEverywhere(value);
+        setNameHiddenObjectForms(value);
     }
 
     @Id
     @GeneratedValue
     private Long id;
-//tag::class[]
 
-//tag::name[]
-    @Property(
-            editing = Editing.ENABLED           // <.>
-    )
+    @Property()
     @Getter @Setter
     private String name;
-//end::name[]
 
-//tag::original-name[]
-    @Property(
-            editingDisabledReason =             // <.>
-                    "This property cannot be edited; " +
-                    "it stores the original value of the name"
-    )
+    @Property // TODO Property's hidden attribute will be removed in 2.0
+    @PropertyLayout(hidden = Where.ALL_TABLES)
     @Getter @Setter
-    private String originalName;
-//end::original-name[]
+    private String nameHiddenAllTables;
 
-//tag::initial-character[]
-    public Character getInitialCharacter() {    // <.>
-        return getName().charAt(0);
-    }
-//end::initial-character[]
-//end::class[]
+    @Property // TODO Property's hidden attribute will be removed in 2.0
+    @PropertyLayout(hidden = Where.EVERYWHERE)
+    @Getter @Setter
+    private String nameHiddenEverywhere;
+
+    @Property // TODO Property's hidden attribute will be removed in 2.0
+    @PropertyLayout(hidden = Where.OBJECT_FORMS)
+    @Getter @Setter
+    private String nameHiddenObjectForms;
 
 
 //tag::class[]

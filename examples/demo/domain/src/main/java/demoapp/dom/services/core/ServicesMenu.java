@@ -18,8 +18,8 @@
  */
 package demoapp.dom.services.core;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
@@ -37,12 +37,14 @@ import demoapp.dom.services.core.errorreportingservice.ErrorReportingServiceDemo
 import demoapp.dom.services.core.eventbusservice.EventBusServiceDemoVm;
 import demoapp.dom.services.core.messageservice.MessageServiceDemoVm;
 import demoapp.dom.services.core.wrapperFactory.WrapperFactoryEntity;
+import demoapp.dom.services.core.xmlSnapshotService.XmlSnapshotParentVm;
+import demoapp.dom.services.core.xmlSnapshotService.peer.XmlSnapshotPeerVm;
 
 @Named("demo.ServicesMenu")
 @DomainService(
         nature=NatureOfService.VIEW
 )
-@jakarta.annotation.Priority(PriorityPrecedence.EARLY)
+@javax.annotation.Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class ServicesMenu {
 
@@ -72,6 +74,26 @@ public class ServicesMenu {
     @ActionLayout(cssClassFa="fa-gift", describedAs = "Formal object interactions + async")
     public WrapperFactoryEntity wrapperFactory(){
         return wrapperFactoryEntities.first().orElse(null);
+    }
+
+    @Action(semantics = SemanticsOf.SAFE)
+    @ActionLayout(cssClassFa="fa-camera", describedAs = "Snapshot object graphs as XML")
+    public XmlSnapshotParentVm xmlSnapshot(){
+
+        val parentVm = new XmlSnapshotParentVm("parent object");
+
+        parentVm.addChild("child 1");
+        parentVm.addChild("child 2");
+        parentVm.addChild("child 3");
+
+        final XmlSnapshotPeerVm peerVm = new XmlSnapshotPeerVm("peer object");
+        parentVm.setPeer(peerVm);
+
+        peerVm.addChild("child 1");
+        peerVm.addChild("child 2");
+        peerVm.addChild("child 3");
+
+        return parentVm;
     }
 
 }
