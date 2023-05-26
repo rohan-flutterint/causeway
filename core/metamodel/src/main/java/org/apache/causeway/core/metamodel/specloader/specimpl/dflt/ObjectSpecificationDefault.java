@@ -200,6 +200,7 @@ implements FacetHolder {
     private Stream<ObjectAssociation> createAssociations() {
         return facetedMethodsBuilder.getAssociationFacetedMethods()
                 .stream()
+                .filter(x -> !isMixinContributedToMixin(x))
                 .map(this::createAssociation)
                 .filter(_NullSafe::isPresent);
     }
@@ -217,8 +218,13 @@ implements FacetHolder {
     private Stream<ObjectAction> createActions() {
         return facetedMethodsBuilder.getActionFacetedMethods()
                 .stream()
+                .filter(x -> !isMixinContributedToMixin(x))
                 .map(this::createAction)
                 .filter(_NullSafe::isPresent);
+    }
+
+    private boolean isMixinContributedToMixin(FacetedMethod facetedMethod) {
+        return isMixin() && specForType(facetedMethod.getOwningType()).map(x -> x.isMixin()).orElse(false);
     }
 
     private ObjectAction createAction(final FacetedMethod facetedMethod) {
